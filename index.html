@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="landing-page" class="page-container visible">
+        <div class="animated-background"></div> 
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-brands fa-spotify"></i>
+                <span class="logo-text">Spotify Clone ♪</span>
+            </div>
+           <nav class="nav-links">
+            <a href="#" id="about-link">About</a>
+            <a href="#" id="contact-link">Contact</a>
+            <a href="#" id="signup-link">Sign Up</a>
+</nav>
+        </header>
+
+        <main class="content-wrapper">
+            <div class="login-form-container">
+                <h1>Welcome ♪ </h1>
+               <form id="login-form">
+             <input type="email" id="email-input" placeholder="Enter your Email here">
+               <button type="submit" class="btn continue-btn">Continue</button>
+             </form>
+                <div class="or-divider">or</div>
+               <div class="social-login">
+                     <button class="social-btn" id="phone-login-btn"><i class="fa-solid fa-phone"></i> Continue with phone number</button>
+                </div>
+            </div>
+            
+            <div class="album-grid">
+                <h2>Trending songs</h2>
+                <div class="album-container">
+                    <div class="album-card" data-song-id="1">
+                        <img src="images/cherry.jpeg" alt="Album 1">
+                        <div class="play-button-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="album-card" data-song-id="2">
+                        <img src="images/weeknd.png" alt="Album 2">
+                        <div class="play-button-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="album-card" data-song-id="3">
+                        <img src="images/lose my mind.jpeg" alt="Album 3">
+                        <div class="play-button-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="album-card" data-song-id="4">
+                        <img src="images/tum hi ho.jpg" alt="Album 4">
+                        <div class="play-button-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="album-card" data-song-id="5">
+                        <img src="images/og.jpeg" alt="Album 5">
+                        <div class="play-button-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="player-page" class="page-container hidden">
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fa-brands fa-spotify"></i>
+                <span class="logo-text">Spotify Clone ♪ </span>
+            </div>
+            <div class="library">
+                <h3>Your Library</h3>
+               <button id="addSongBtn">➕ Add Song ♪ </button>
+                <input type="file" id="fileInput" accept="audio/*" style="display:none">
+            </div>
+            <div class="settings">
+                <span>English</span>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <header class="player-header">
+                <div class="header-container">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="What do you want to play?">
+                    </div>
+                    <div class="user-actions">
+                        <span id="user-email"></span>
+                        <a href="#" id="support-link" style="padding-right:8px;">Support</a>
+                        <span class="divider">|</span>
+                        <button id="logout-btn" style="margin-left:7px;">Log out</button>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-sections">
+                <section class="recently-played-section">
+                    <h2>Recently Played</h2>
+                    <div id="recently-played-list" class="music-grid">
+                        </div>
+                </section>
+
+                <section class="artist-section">
+                    <h2>Popular Artists</h2>
+                    <div id="artist-list" class="artist-grid">
+                        </div>
+                </section>
+                
+                <section class="latest-songs-section">
+                    <h2>Latest Songs</h2>
+                    <div id="latest-songs-list" class="music-grid">
+                        </div>
+                </section>
+            </div>
+        </div>
+        
+        <div class="music-player-bar">
+            <div class="song-info">
+                <img id="current-song-img" src="" alt="Album Cover">
+                <div class="details">
+                    <h4 id="current-song-title"></h4>
+                    <span id="current-song-artist"></span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress-bar" value="0" min="0" max="100">
+                <span id="total-time">0:00</span>
+            </div>
+            
+            <div class="controls">
+                <button id="shuffle-btn"><i class="fas fa-shuffle"></i></button>
+                <button id="prev-btn"><i class="fas fa-backward-step"></i></button>
+                <button id="play-pause-btn"><i class="fas fa-play"></i></button>
+                <button id="next-btn"><i class="fas fa-forward-step"></i></button>
+                
+                <button id="delete-btn"><i class="fas fa-trash"></i></button>
+            </div>
+            <audio id="audio-player"></audio>
+            
+            <div class="volume-container">
+                <i class="fas fa-volume-down" id="volume-icon"></i>
+                <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast-message" class="toast">
+        <p>Welcome back to Spotify ♪ world!</p>
+    </div>
+    <script src="script.js"></script>
+    <footer>
+    <p><i>© 2025 Spotify clone ♪ | Music Heals Everything ♪</i></p>
+    </footer>
+    
+</body>
+</html>
